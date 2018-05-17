@@ -3,4 +3,8 @@ class User < ApplicationRecord
   validates_presence_of :password
 
   has_many :games
+
+  def create_game
+    Game.create_game(self)
+  end
 end

@@ -9,4 +9,18 @@ describe User, type: :model do
   describe 'relationships' do
     it {should have_many(:games)}
   end
+
+  describe 'create game' do
+    it 'can create a game with proper default state' do
+      user = User.create(name: 'bob', password: '1234')
+
+      game = user.create_game
+
+      expect(user.games.first).to eq(game)
+      expect(game.status).to eq(0)
+      expect(game.cells.count).to eq(16)
+      expect(game.cells[0].value).to eq(0)
+      expect(game.cells[9].value).to eq(0)
+    end
+  end
 end

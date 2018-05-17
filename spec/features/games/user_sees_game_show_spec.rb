@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'user visits the game show page' do
   it 'starts with an empty board' do
-    game = Game.create_game
+    user = User.create(name: 'bob', password: '1234')
+    game = user.create_game
 
     visit game_path(game)
 
