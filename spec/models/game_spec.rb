@@ -1,0 +1,17 @@
+require 'rails_helper'
+
+describe Game, type: :model do
+  describe 'validations' do
+    it {should validate_presence_of(:status)}
+  end
+
+  #describe 'relationships' do
+
+  describe 'default state' do
+    it 'has a default status of 0' do
+      game = Game.create
+      expect(game.status).to eq(0)
+    end
+    #expect(game.cells.count).to eq(16)
+  end
+end
