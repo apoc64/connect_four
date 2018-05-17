@@ -5,7 +5,9 @@ describe Game, type: :model do
     it {should validate_presence_of(:status)}
   end
 
-  #describe 'relationships' do
+  describe 'relationships' do
+    it {should have_many(:cells)}
+  end
 
   describe 'default state' do
     it 'has a default status of 0' do
