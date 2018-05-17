@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'user visits the game show page' do
-  xit 'starts with an empty board' do
+  it 'starts with an empty board' do
     game = Game.create_game
 
     visit game_path(game)

@@ -30,7 +30,7 @@ describe Cell, type: :model do
 
     it 'can output alternate text when empty' do
       cell = Cell.new
-      call.update(value: 2)
+      cell.update(value: 2)
       expect(cell.alt).to eq('black')
     end
   end
