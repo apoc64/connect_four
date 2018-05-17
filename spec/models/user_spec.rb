@@ -8,6 +8,7 @@ describe User, type: :model do
 
   describe 'relationships' do
     it {should have_many(:games)}
+    it {should have_many(:trophies).through(:user_trophies)}
   end
 
   describe 'create game' do
