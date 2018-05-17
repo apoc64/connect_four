@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+.game_board {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(4, 210px);
+  grid-template-rows: repeat(4, 210px);
+}
