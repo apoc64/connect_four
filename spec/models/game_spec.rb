@@ -7,6 +7,7 @@ describe Game, type: :model do
 
   describe 'relationships' do
     it {should have_many(:cells)}
+    it {should belong_to(:user)}
   end
 
   describe 'default state' do

@@ -1,6 +1,7 @@
 class Game <ApplicationRecord
   validates_presence_of :status
   has_many :cells
+  belongs_to :user
 
   def self.create_game
     game = Game.create
