@@ -15,4 +15,23 @@ describe Cell, type: :model do
       expect(cell.value).to eq(0)
     end
   end
+
+  describe 'output messages' do
+    it 'can output alternate text when empty' do
+      cell = Cell.new
+      expect(cell.alt).to eq('empty')
+    end
+
+    it 'can output alternate text when empty' do
+      cell = Cell.new
+      cell.update(value: 1)
+      expect(cell.alt).to eq('red')
+    end
+
+    it 'can output alternate text when empty' do
+      cell = Cell.new
+      call.update(value: 2)
+      expect(cell.alt).to eq('black')
+    end
+  end
 end
