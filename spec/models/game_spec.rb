@@ -14,6 +14,9 @@ describe Game, type: :model do
       game = Game.create
       expect(game.status).to eq(0)
     end
-    #expect(game.cells.count).to eq(16)
+    it 'has 16 cells with create_game method' do
+      game = Game.create_game
+      expect(game.cells.count).to eq(16)
+    end
   end
 end

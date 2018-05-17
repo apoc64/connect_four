@@ -12,7 +12,6 @@ describe Cell, type: :model do
   describe 'default_state' do
     it 'should have a default value of zero' do
       cell = Cell.create
-      # binding.pry
       expect(cell.value).to eq(0)
     end
   end
