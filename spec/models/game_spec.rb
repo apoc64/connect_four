@@ -165,5 +165,32 @@ describe Game, type: :model do
 
       expect(result).to eq(true)
     end
+
+    it 'evaluates no win on a complex board' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(2, 1)
+      game.drop(3, 2)
+      game.drop(1, 1)
+      game.drop(0, 2)
+      game.drop(2, 1)
+      game.drop(3, 2)
+      game.drop(0, 1)
+      game.drop(2, 2)
+      game.drop(1, 1)
+      game.drop(2, 2)
+      game.drop(3, 1)
+      game.drop(0, 2)
+      game.drop(3, 1)
+      game.drop(1, 2)
+      #use this game to test full borad
+
+      result = game.check_win
+
+      expect(result).to eq(false)
+    end
   end
 end

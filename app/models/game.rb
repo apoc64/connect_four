@@ -36,8 +36,6 @@ class Game <ApplicationRecord
   def check_win
     WINNING_COMBOS.each do |combo|
       won = (1..3).all? do |i|
-        # index = combo[i]
-        # binding.pry
         (cells[combo[i]].value == cells[combo[i - 1]].value) && (cells[combo[1]].value != 0)
       end
       return true if won
