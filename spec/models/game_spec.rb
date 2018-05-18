@@ -89,5 +89,38 @@ describe Game, type: :model do
       expect(game.cells[10].value).to eq(1)
       expect(game.cells[10].alt).to eq('red')
     end
+
+    it 'when stacked 4 high drop returns false and changes no cells' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+      game.drop(0, 1) #(column, player)
+      game.drop(0, 2)
+      game.drop(0, 1)
+      result = game.drop(0, 2)
+
+      expect(result).to eq(true)
+      expect(game.cells[12].value).to eq(1)
+      expect(game.cells[12].alt).to eq('red')
+      expect(game.cells[8].value).to eq(2)
+      expect(game.cells[8].alt).to eq('black')
+      expect(game.cells[4].value).to eq(1)
+      expect(game.cells[4].alt).to eq('red')
+      expect(game.cells[0].value).to eq(2)
+      expect(game.cells[0].alt).to eq('black')
+
+      result = game.drop(0, 2)
+
+      expect(result).to eq(false)
+      expect(game.cells[12].value).to eq(1)
+      expect(game.cells[12].alt).to eq('red')
+      expect(game.cells[13].value).to eq(0)
+      expect(game.cells[13].alt).to eq('empty')
+      expect(game.cells[8].value).to eq(2)
+      expect(game.cells[8].alt).to eq('black')
+      expect(game.cells[1].value).to eq(0)
+      expect(game.cells[1].alt).to eq('empty')
+      expect(game.cells[0].value).to eq(2)
+      expect(game.cells[0].alt).to eq('black')
+    end
   end
 end
