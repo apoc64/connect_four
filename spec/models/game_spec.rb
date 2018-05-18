@@ -132,5 +132,38 @@ describe Game, type: :model do
 
       expect(result).to eq(false)
     end
+
+    it 'can evaluate a win on bottom row' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(0, 1)
+      game.drop(1, 1)
+      game.drop(2, 1)
+      game.drop(3, 1)
+
+      result = game.check_win
+
+      expect(result).to eq(true)
+    end
+
+    it 'can evaluate a win on a coulmn with other colors elsewhere' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(0, 1)
+      game.drop(2, 2)
+      game.drop(2, 1)
+      game.drop(2, 2)
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(0, 1)
+
+      result = game.check_win
+
+      expect(result).to eq(true)
+    end
   end
 end
