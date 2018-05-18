@@ -123,4 +123,14 @@ describe Game, type: :model do
       expect(game.cells[0].alt).to eq('black')
     end
   end
+
+  describe 'evaluating wins' do
+    it 'evaluates no win when board is blank' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+      result = game.check_win
+
+      expect(result).to eq(false)
+    end
+  end
 end

@@ -26,4 +26,8 @@ class Game <ApplicationRecord
       end
     end
   end
+
+  def check_win
+    false
+  end
 end
