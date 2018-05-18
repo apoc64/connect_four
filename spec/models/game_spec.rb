@@ -192,5 +192,24 @@ describe Game, type: :model do
 
       expect(result).to eq(false)
     end
+
+    # it can evaluate diagonal win
+
+    # describe full board
+
+    # describe move
+      # game.move(coulmn) -
+        #user drops their choise
+        #evaluate win - action?
+        #evaluate full
+        #computer drops
+        #evaluate
+
+        #test placement of white
+        #test that one black placed
+        #test that -2 empty
+        #test player 1 win
+        #test computer win
+        #test full board
   end
 end
