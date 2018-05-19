@@ -333,11 +333,37 @@ describe Game, type: :model do
       expect(result).to eq(true)
     end
 
-    #test computer win
+    it 'can make a losing move' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(3, 1)
+      game.drop(0, 2)
+      game.drop(1, 1)
+      game.drop(0, 2)
+      game.drop(2, 1)
+      game.drop(0, 2)
+      game.drop(1, 1)
+      game.drop(1, 2)
+      game.drop(2, 1)
+      game.drop(2, 2)
+      game.drop(1, 1)
+      game.drop(3, 2)
+      game.drop(3, 1)
+      game.drop(2, 2)
+      result = game.move(3)
+
+      expect(game.cells.where(value: 1).count).to eq(8)
+      expect(game.cells.where(value: 2).count).to eq(8)
+      expect(game.cells.where(value: 0).count).to eq(0)
+      expect(game.status).to eq(2)
+      expect(result).to eq(true)
+    end
+
     #test full board
   end
 
-  describe 'check game over after move' do
+  describe 'check game over after game' do
     it 'can return false on an uncompleted game' do
     end
     it 'can return true and change status on a win' do
