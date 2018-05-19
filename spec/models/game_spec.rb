@@ -285,20 +285,36 @@ describe Game, type: :model do
     end
   end
 
-    describe 'Series of moves' do
-      it 'can make the first move' do
-        user = User.create(name: 'bob', password: '1234')
-        game = Game.create_game(user)
+  describe 'Series of moves' do
+    it 'can make the first move' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
 
-        result = game.move(0)
+      result = game.move(0)
 
-        expect(game.cells[12].value).to eq(1)
-        expect(game.cells.where(value: 2).count).to eq(1)
-        expect(game.cells.where(value: 0).count).to eq(14)
-        expect(game.status).to eq(0)
-        expect(result).to eq(true)
-      end
+      expect(game.cells[12].value).to eq(1)
+      expect(game.cells.where(value: 2).count).to eq(1)
+      expect(game.cells.where(value: 0).count).to eq(14)
+      expect(game.status).to eq(0)
+      expect(result).to eq(true)
     end
+
+    it 'can make several moves' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.move(0)
+      game.move(2)
+      result = game.move(3)
+
+      expect(game.cells[12].value).to eq(1)
+      expect(game.cells.where(value: 1).count).to eq(3)
+      expect(game.cells.where(value: 2).count).to eq(3)
+      expect(game.cells.where(value: 0).count).to eq(10)
+      expect(game.status).to eq(0)
+      expect(result).to eq(true)
+    end
+  end
       # game.move(coulmn) -
         #user drops their choise
         #evaluate win - action?
