@@ -192,10 +192,76 @@ describe Game, type: :model do
 
       expect(result).to eq(false)
     end
+  end
 
-    # it can evaluate diagonal win
+  describe 'evaluating full board' do
+    it 'evaluates false when board is blank' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+      result = game.check_full
 
-    # describe full board
+      expect(result).to eq(false)
+    end
+
+    it 'can evaluate false with pieces on bottom row' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(2, 1)
+      game.drop(3, 2)
+
+      result = game.check_full
+
+      expect(result).to eq(false)
+    end
+
+    it 'can evaluate false with one column full' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(3, 1)
+      game.drop(0, 2)
+      game.drop(2, 1)
+      game.drop(2, 2)
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(0, 1)
+
+      result = game.check_full
+
+      expect(result).to eq(false)
+    end
+
+    it 'evaluates true with a full board' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(2, 1)
+      game.drop(3, 2)
+      game.drop(1, 1)
+      game.drop(0, 2)
+      game.drop(2, 1)
+      game.drop(3, 2)
+      game.drop(0, 1)
+      game.drop(2, 2)
+      game.drop(1, 1)
+      game.drop(2, 2)
+      game.drop(3, 1)
+      game.drop(0, 2)
+      game.drop(3, 1)
+      game.drop(1, 2)
+
+      result = game.check_full
+
+      expect(result).to eq(true)
+    end
+  end
 
     # describe move
       # game.move(coulmn) -
@@ -211,5 +277,5 @@ describe Game, type: :model do
         #test player 1 win
         #test computer win
         #test full board
-  end
+
 end
