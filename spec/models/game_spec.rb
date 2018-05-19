@@ -208,7 +208,6 @@ describe Game, type: :model do
       game.drop(0, 2)
       game.drop(3, 1)
       game.drop(1, 2)
-      #use this game to test full borad
 
       result = game.check_win
 
@@ -314,19 +313,38 @@ describe Game, type: :model do
       expect(game.status).to eq(0)
       expect(result).to eq(true)
     end
+
+    it 'can make a winning move' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(0, 1)
+      game.drop(2, 2)
+      game.drop(0, 1)
+      game.drop(1, 2)
+      result = game.move(0)
+
+      expect(game.cells.where(value: 1).count).to eq(4)
+      expect(game.cells.where(value: 2).count).to eq(3)
+      expect(game.cells.where(value: 0).count).to eq(9)
+      expect(game.status).to eq(1)
+      expect(result).to eq(true)
+    end
+    #test player 1 win
+    #test computer win
+    #test full board
   end
-      # game.move(coulmn) -
-        #user drops their choise
-        #evaluate win - action?
-        #evaluate full
-        #computer drops
-        #evaluate
 
-        #test placement of white
-        #test that one black placed
-        #test that -2 empty
-        #test player 1 win
-        #test computer win
-        #test full board
-
+  describe 'check status after game' do
+    it 'can return false on an uncompleted game' do
+    end
+    it 'can return true and change status on a win' do
+    end
+    it 'can return true and change status on a loss' do
+    end
+    it 'can return true and change status on a draw' do
+    end
+  end
 end
