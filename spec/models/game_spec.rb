@@ -24,6 +24,24 @@ describe Game, type: :model do
     end
   end
 
+  describe 'alt status' do
+    it 'can show a string for its status' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+      message1 = 'In Progress'
+      message2 = 'Win'
+      message3 = 'Loss'
+
+      expect(game.alt).to eq(message1)
+
+      game.update(status: 1)
+      expect(game.alt).to eq(message2)
+
+      game.update(status: 2)
+      expect(game.alt).to eq(message3)
+    end
+  end
+
   describe 'dropping piece in column' do
     it 'dropping piece in column goes to bottom' do
       user = User.create(name: 'bob', password: '1234')
@@ -262,6 +280,8 @@ describe Game, type: :model do
       expect(result).to eq(true)
     end
   end
+
+
 
     # describe move
       # game.move(coulmn) -

@@ -11,6 +11,12 @@ class Game <ApplicationRecord
     game
   end
 
+  def alt
+    return 'In Progress' if status.zero?
+    return 'Win' if status == 1
+    return 'Loss' if status == 2
+  end
+
   COLUMNS = [[0, 4, 8, 12], [1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15]]
 
   def drop(column, player)
