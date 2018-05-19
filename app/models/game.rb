@@ -57,17 +57,14 @@ class Game <ApplicationRecord
   end
 
   def move(column)
-    return false unless drop(column, 1)
-    return true if check_status_after_move(1)
-    computer_turn = drop(rand(4), 2)
-    until computer_turn
-      computer_turn = drop(rand(4), 2)
-    end
-    check_status_after_move(2)
+    return false unless drop(column, 1) # pick a different column
+    return true if game_over_after_move(1)
+    computer_turn = drop(rand(4), 2) until computer_turn
+    game_over_after_move(2)
     true
   end
 
-  def check_status_after_move(player)
+  def game_over_after_move(player)
     if check_win
       self.status = player
       return true

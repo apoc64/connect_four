@@ -332,12 +332,12 @@ describe Game, type: :model do
       expect(game.status).to eq(1)
       expect(result).to eq(true)
     end
-    #test player 1 win
+
     #test computer win
     #test full board
   end
 
-  describe 'check status after game' do
+  describe 'check game over after move' do
     it 'can return false on an uncompleted game' do
     end
     it 'can return true and change status on a win' do
