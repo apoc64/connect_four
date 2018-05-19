@@ -15,6 +15,7 @@ class Game <ApplicationRecord
     return 'In Progress' if status.zero?
     return 'Win' if status == 1
     return 'Loss' if status == 2
+    return 'Draw' if status == 3
   end
 
   COLUMNS = [[0, 4, 8, 12], [1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15]]
@@ -53,5 +54,26 @@ class Game <ApplicationRecord
     cells.none? do |cell|
       cell.value == 0
     end
+  end
+
+  def move(column)
+    return false unless drop(column, 1)
+    if check_win
+      # status set, return
+    end
+    if check_full
+      # status set, return
+    end
+    computer_turn = drop(rand(4), 2)
+    until computer_turn
+      computer_turn = drop(rand(4), 2)
+    end
+    if check_win
+      # status set, return
+    end
+    if check_full
+      # status set, return
+    end
+    true
   end
 end

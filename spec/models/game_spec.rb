@@ -31,6 +31,7 @@ describe Game, type: :model do
       message1 = 'In Progress'
       message2 = 'Win'
       message3 = 'Loss'
+      message4 = 'Draw'
 
       expect(game.alt).to eq(message1)
 
@@ -39,6 +40,9 @@ describe Game, type: :model do
 
       game.update(status: 2)
       expect(game.alt).to eq(message3)
+
+      game.update(status: 3)
+      expect(game.alt).to eq(message4)
     end
   end
 
@@ -281,9 +285,20 @@ describe Game, type: :model do
     end
   end
 
+    describe 'Series of moves' do
+      it 'can make the first move' do
+        user = User.create(name: 'bob', password: '1234')
+        game = Game.create_game(user)
 
+        result = game.move(0)
 
-    # describe move
+        expect(game.cells[12].value).to eq(1)
+        expect(game.cells.where(value: 2).count).to eq(1)
+        expect(game.cells.where(value: 0).count).to eq(14)
+        expect(game.status).to eq(0)
+        expect(result).to eq(true)
+      end
+    end
       # game.move(coulmn) -
         #user drops their choise
         #evaluate win - action?
