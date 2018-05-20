@@ -12,4 +12,9 @@ describe 'user visits new user page' do
     expect(current_path).to eq(user_path(User.last))
     expect(page).to have_content("Hello, #{name}")
   end
+
+  xit 'fails on blank field' do
+  end
+  xit 'fails on non-unique field' do
+  end
 end
