@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
-    @cells = @game.cells
+    @cells = @game.cells.order(:id)
   end
 
   def update

@@ -18,17 +18,21 @@ class Game <ApplicationRecord
     return 'Draw' if status == 3
   end
 
+  def ordered_cells
+    cells.order(:id)
+  end
+
   COLUMNS = [[0, 4, 8, 12], [1, 5, 9, 13], [2, 6, 10, 14], [3, 7, 11, 15]]
 
   def drop(column, player)
     spaces = COLUMNS[column]
-    return false if cells[spaces[0]].value != 0
+    return false if ordered_cells[spaces[0]].value != 0
     spaces.each_with_index do |space, index|
       if index == 3
-        cells[space].update(value: player)
+        ordered_cells[space].update(value: player)
         return true
-      elsif cells[spaces[index + 1]].value != 0
-        cells[space].update(value: player)
+      elsif ordered_cells[spaces[index + 1]].value != 0
+        ordered_cells[space].update(value: player)
         return true
       end
     end
@@ -43,7 +47,7 @@ class Game <ApplicationRecord
   def check_win
     WINNING_COMBOS.each do |combo|
       won = (1..3).all? do |i| #AR method for all?
-        (cells[combo[i]].value == cells[combo[i - 1]].value) && (cells[combo[1]].value != 0)
+        (ordered_cells[combo[i]].value == ordered_cells[combo[i - 1]].value) && (ordered_cells[combo[1]].value != 0)
       end
       return true if won
     end
@@ -51,7 +55,7 @@ class Game <ApplicationRecord
   end
 
   def check_full
-    cells.none? do |cell|
+    ordered_cells.none? do |cell|
       cell.value == 0
     end
   end
@@ -75,4 +79,5 @@ class Game <ApplicationRecord
     end
     false
   end
+
 end
