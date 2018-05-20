@@ -91,5 +91,49 @@ describe 'user visits the game show page' do
       end
     end
 
+    it 'can drop in column three' do
+      user = User.create(name: 'bob', password: '1234')
+      game = user.create_game
+      visit game_path(game)
+
+      # within('.column2') do
+        click_on 'Drop3'
+      # end
+      message1 = 'Square 15 is red'
+      message2 = 'is black'
+      message7 = 'Square 7 is empty'
+
+      expect(current_path).to eq(game_path(game))
+      within('.cell15') do
+        expect(page).to have_content(message1)
+      end
+      expect(page).to have_content(message2)
+      within('.cell7') do
+        expect(page).to have_content(message7)
+      end
+    end
+
+    it 'can drop in column four' do
+      user = User.create(name: 'bob', password: '1234')
+      game = user.create_game
+      visit game_path(game)
+
+      # within('.column2') do
+        click_on 'Drop4'
+      # end
+      message1 = 'Square 16 is red'
+      message2 = 'is black'
+      message7 = 'Square 7 is empty'
+
+      expect(current_path).to eq(game_path(game))
+      within('.cell16') do
+        expect(page).to have_content(message1)
+      end
+      expect(page).to have_content(message2)
+      within('.cell7') do
+        expect(page).to have_content(message7)
+      end
+    end
+
   end
 end
