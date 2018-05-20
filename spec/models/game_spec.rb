@@ -360,7 +360,32 @@ describe Game, type: :model do
       expect(result).to eq(true)
     end
 
-    #test full board
+    it 'can make a move that fills the board for a draw' do
+      user = User.create(name: 'bob', password: '1234')
+      game = Game.create_game(user)
+
+      game.drop(0, 1)
+      game.drop(1, 2)
+      game.drop(2, 1)
+      game.drop(3, 2)
+      game.drop(1, 1)
+      game.drop(0, 2)
+      game.drop(2, 1)
+      game.drop(3, 2)
+      game.drop(0, 1)
+      game.drop(2, 2)
+      game.drop(1, 1)
+      game.drop(2, 2)
+      game.drop(3, 1)
+      game.drop(0, 2)
+      result = game.move(3)
+
+      expect(game.cells.where(value: 1).count).to eq(8)
+      expect(game.cells.where(value: 2).count).to eq(8)
+      expect(game.cells.where(value: 0).count).to eq(0)
+      expect(game.status).to eq(3)
+      expect(result).to eq(true)
+    end
   end
 
   describe 'check game over after game' do

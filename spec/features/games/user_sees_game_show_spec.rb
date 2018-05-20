@@ -45,4 +45,30 @@ describe 'user visits the game show page' do
       expect(page).to have_content(message16)
     end
   end
+
+  describe 'user can play the game' do
+    it 'can drop in column one' do
+      user = User.create(name: 'bob', password: '1234')
+      game = user.create_game
+
+      visit game_path(game)
+
+      within('.column0') do
+        click_on 'Drop'
+      end
+      message1 = 'Square 12 is red'
+      message2 = 'is black'
+      message7 = 'Square 7 is empty'
+
+      expect(current_path).to eq(game_path(game))
+      within('.cell12') do
+        expect(page).to have_content(message1)
+      end
+      expect(page).to have_content(message2)
+      within('.cell7') do
+        expect(page).to have_content(message7)
+      end
+    end
+    
+  end
 end
