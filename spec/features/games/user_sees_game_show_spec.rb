@@ -50,12 +50,12 @@ describe 'user visits the game show page' do
     it 'can drop in column one' do
       user = User.create(name: 'bob', password: '1234')
       game = user.create_game
-
+      # binding.pry
       visit game_path(game)
 
-      within('.column0') do
-        click_on 'Drop'
-      end
+      # within('.column0') do
+        click_on 'Drop1'
+      # end
       message1 = 'Square 12 is red'
       message2 = 'is black'
       message7 = 'Square 7 is empty'
@@ -69,6 +69,6 @@ describe 'user visits the game show page' do
         expect(page).to have_content(message7)
       end
     end
-    
+
   end
 end
