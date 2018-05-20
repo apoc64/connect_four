@@ -1,4 +1,13 @@
+<!-- <%= button_to 'Start New Game', 'create', params: {user_id: @game.user.id} ,class: 'new_game' %> -->
+<%= link_to "Start New Game", new_game_path %>
+
+
 <main class="game_board">
+<%= button_to 'Drop1', 'update', method: 'patch', params: {column: 0, game_id: @game.id} ,class: 'column0' %>
+<%= button_to 'Drop2', 'update', method: 'patch', params: {column: 1, game_id: @game.id} ,class: 'column1' %>
+<%= button_to 'Drop3', 'update', method: 'patch', params: {column: 2, game_id: @game.id} ,class: 'column0' %>
+<%= button_to 'Drop4', 'update', method: 'patch', params: {column: 3, game_id: @game.id} ,class: 'column0' %>
+
 <section class="cell1">
   <%= image_tag("square#{@cells[0].value}", alt: "Square 1 is #{@cells[0].alt}") %>
   Square 1 is <%= @cells[0].alt %>
