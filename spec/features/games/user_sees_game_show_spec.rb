@@ -135,5 +135,26 @@ describe 'user visits the game show page' do
       end
     end
 
+    # it can win
+    # it can lose
+    # it can draw
+  end
+
+  describe 'create new game' do
+    it 'can create new game' do
+      user = User.create(name: 'bob', password: '1234')
+      game = user.create_game
+      visit game_path(game)
+
+      click_on 'Start New Game'
+
+      expect(current_path).to eq(game_path(Game.last))
+      expect(current_path).to_not eq(game_path(game))
+      message1 = 'is red'
+      message2 = 'is black'
+
+      expect(page).to_not have_content(message1)
+      expect(page).to_not have_content(message2)
+    end
   end
 end

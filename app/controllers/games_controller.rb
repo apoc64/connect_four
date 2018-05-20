@@ -9,4 +9,13 @@ class GamesController < ApplicationController
     game.move(params[:column].to_i)
     redirect_to game_path(game)
   end
+
+  def create #why wont it hit?
+  end
+
+  def new
+    user = User.last
+    game = user.create_game
+    redirect_to game_path(game)
+  end
 end
