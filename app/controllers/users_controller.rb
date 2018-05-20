@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @statuses = @user.games.select('count(games.id) AS count').group(:status).order(:status)
+    # binding.pry
   end
 
   private
