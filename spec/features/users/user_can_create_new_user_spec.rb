@@ -15,6 +15,6 @@ describe 'user visits new user page' do
 
   xit 'fails on blank field' do
   end
-  xit 'fails on non-unique field' do
+  xit 'fails on non-unique name' do
   end
 end
