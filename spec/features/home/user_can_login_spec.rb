@@ -7,13 +7,12 @@ describe 'visitor' do
     user = User.create!(name: name, password: '1234')
 
     visit login_path
-    # binding.pry
-    # save_and_open_page
+
     fill_in :name, with: name
     fill_in :password, with: password
     click_on 'Log On'
 
     expect(current_path).to eq(user_path(user))
-
+    expect(page).to have_content("Hello, #{name}")
   end
 end
