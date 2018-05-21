@@ -5,7 +5,7 @@ describe 'user visits the game show page' do
     user = User.create(name: 'bob', password: '1234')
     game = user.create_game
 
-    visit game_path(game)
+    visit user_game_path(user, game)
 
     message1 = "Square 1 is empty"
     message7 = "Square 7 is empty"
@@ -33,7 +33,7 @@ describe 'user visits the game show page' do
     message16 = 'Square 16 is red'
     game.cells[15].update(value: 1)
 
-    visit game_path(game)
+    visit user_game_path(user, game)
 
     within('.cell1') do
       expect(page).to have_content(message1)
@@ -50,7 +50,7 @@ describe 'user visits the game show page' do
     it 'can drop in column one' do
       user = User.create(name: 'bob', password: '1234')
       game = user.create_game
-      visit game_path(game)
+      visit user_game_path(user, game)
 
       # within('.column0') do
         click_on 'Drop1'
@@ -59,7 +59,7 @@ describe 'user visits the game show page' do
       message2 = 'is black'
       message7 = 'Square 7 is empty'
 
-      expect(current_path).to eq(game_path(game))
+      expect(current_path).to eq(user_game_path(user, game))
       within('.cell13') do
         expect(page).to have_content(message1)
       end
@@ -72,7 +72,7 @@ describe 'user visits the game show page' do
     it 'can drop in column two' do
       user = User.create(name: 'bob', password: '1234')
       game = user.create_game
-      visit game_path(game)
+      visit user_game_path(user, game)
 
       # within('.column1') do
         click_on 'Drop2'
@@ -81,7 +81,7 @@ describe 'user visits the game show page' do
       message2 = 'is black'
       message7 = 'Square 7 is empty'
 
-      expect(current_path).to eq(game_path(game))
+      expect(current_path).to eq(user_game_path(user, game))
       within('.cell14') do
         expect(page).to have_content(message1)
       end
@@ -94,7 +94,7 @@ describe 'user visits the game show page' do
     it 'can drop in column three' do
       user = User.create(name: 'bob', password: '1234')
       game = user.create_game
-      visit game_path(game)
+      visit user_game_path(user, game)
 
       # within('.column2') do
         click_on 'Drop3'
@@ -103,7 +103,7 @@ describe 'user visits the game show page' do
       message2 = 'is black'
       message7 = 'Square 7 is empty'
 
-      expect(current_path).to eq(game_path(game))
+      expect(current_path).to eq(user_game_path(user, game))
       within('.cell15') do
         expect(page).to have_content(message1)
       end
@@ -116,7 +116,7 @@ describe 'user visits the game show page' do
     it 'can drop in column four' do
       user = User.create(name: 'bob', password: '1234')
       game = user.create_game
-      visit game_path(game)
+      visit user_game_path(user, game)
 
       # within('.column2') do
         click_on 'Drop4'
@@ -125,7 +125,7 @@ describe 'user visits the game show page' do
       message2 = 'is black'
       message7 = 'Square 7 is empty'
 
-      expect(current_path).to eq(game_path(game))
+      expect(current_path).to eq(user_game_path(user, game))
       within('.cell16') do
         expect(page).to have_content(message1)
       end
@@ -144,12 +144,12 @@ describe 'user visits the game show page' do
     it 'can create new game' do
       user = User.create(name: 'bob', password: '1234')
       game = user.create_game
-      visit game_path(game)
+      visit user_game_path(user, game)
 
       click_on 'Start New Game'
 
-      expect(current_path).to eq(game_path(Game.last))
-      expect(current_path).to_not eq(game_path(game))
+      expect(current_path).to eq(user_game_path(user, Game.last))
+      expect(current_path).to_not eq(user_game_path(user, game))
       message1 = 'is red'
       message2 = 'is black'
 

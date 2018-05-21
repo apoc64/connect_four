@@ -1,5 +1,5 @@
 <!-- <%= button_to 'Start New Game', 'create', params: {user_id: @game.user.id} ,class: 'new_game' %> -->
-<%= link_to "Start New Game", new_game_path %>
+<%= link_to "Start New Game", new_user_game_path(@game.user) %>
 
 
 <main class="game_board">

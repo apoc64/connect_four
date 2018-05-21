@@ -1,4 +1,4 @@
-class Game <ApplicationRecord
+class Game < ApplicationRecord
   validates_presence_of :status
   has_many :cells
   belongs_to :user
@@ -70,11 +70,11 @@ class Game <ApplicationRecord
 
   def game_over_after_move(player)
     if check_win
-      self.status = player
+      update(status: player)
       return true
     end
     if check_full
-      self.status = 3
+      update(status: 3)
       return true
     end
     false

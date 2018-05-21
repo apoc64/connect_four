@@ -46,7 +46,9 @@ describe Game, type: :model do
     end
   end
 
-  # describe ordered cells
+  xdescribe 'ordered cells' do
+  end
+
 
   describe 'dropping piece in column' do
     it 'dropping piece in column goes to bottom' do
@@ -391,13 +393,13 @@ describe Game, type: :model do
   end
 
   describe 'check game over after game' do
-    it 'can return false on an uncompleted game' do
+    xit 'can return false on an uncompleted game' do
     end
-    it 'can return true and change status on a win' do
+    xit 'can return true and change status on a win' do
     end
-    it 'can return true and change status on a loss' do
+    xit 'can return true and change status on a loss' do
     end
-    it 'can return true and change status on a draw' do
+    xit 'can return true and change status on a draw' do
     end
   end
 end
