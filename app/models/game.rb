@@ -70,11 +70,11 @@ class Game < ApplicationRecord
 
   def game_over_after_move(player)
     if check_win
-      self.update(status: player)
+      update(status: player)
       return true
     end
     if check_full
-      self.update(status: 3)
+      update(status: 3)
       return true
     end
     false
