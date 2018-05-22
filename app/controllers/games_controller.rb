@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
-    @cells = @game.cells.order(:id)
+    if current_user && @game.user == current_user
+      @cells = @game.cells.order(:id)
+    else
+      render file: '/public/404'
+    end
   end
 
   def update
