@@ -16,7 +16,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @statuses = @user.games.select('count(games.id) AS count').group(:status).order(:status)
+    # if @user == current_user
+      @statuses = @user.games.select('count(games.id) AS count').group(:status).order(:status)
+    # else
+    #   redirect_to root_path
+    # end
   end
 
   private
