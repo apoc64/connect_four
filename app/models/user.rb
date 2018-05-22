@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  enum role: [:default, :admin]
+
   def create_game
     Game.create_game(self)
   end
