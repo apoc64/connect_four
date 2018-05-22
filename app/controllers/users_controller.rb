@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # if @user == current_user
+    if @user == current_user
       @statuses = @user.games.select('count(games.id) AS count').group(:status).order(:status)
-    # else
-    #   redirect_to root_path
-    # end
+    else
+      render file: '/public/404'
+    end
   end
 
   private

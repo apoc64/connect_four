@@ -14,6 +14,8 @@ describe 'user wins a game' do
     game.drop(2, 2)
     game.drop(0, 1)
     game.drop(1, 2)
+    
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit user_game_path(user, game)
 

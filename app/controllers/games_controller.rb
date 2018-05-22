@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
-    @cells = @game.cells.order(:id)
+    if current_user && @game.user == current_user
+      @cells = @game.cells.order(:id)
+    else
+      render file: '/public/404'
+    end
   end
 
   def update
@@ -13,9 +17,6 @@ class GamesController < ApplicationController
     #   redirect_to new_user_trophy_path(game.user)
     # # end
   end
-
-  # def create #why wont it hit?
-  # end
 
   def new
     user = User.find(params[:user_id])
