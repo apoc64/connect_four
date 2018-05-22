@@ -1,12 +1,21 @@
 <!-- <%= button_to 'Start New Game', 'create', params: {user_id: @game.user.id} ,class: 'new_game' %> -->
-<%= link_to "Start New Game", new_user_game_path(@game.user) %>
 
+<% if @game.status == 0 %>
+<%= link_to "Start New Game", new_user_game_path(@game.user) %>
+  <h2>Good Luck!</h2>
+
+<% elsif @game.status == 1 %>
+<%= link_to "Claim Your Trophy", new_user_trophy_path(@game.user) %>
+
+  <h2>Congratulations <%= @game.user.name %>!</h2>
+<% end %>
 
 <main class="game_board">
 <%= button_to 'Drop1', 'update', method: 'patch', params: {column: 0, game_id: @game.id} ,class: 'column0' %>
 <%= button_to 'Drop2', 'update', method: 'patch', params: {column: 1, game_id: @game.id} ,class: 'column1' %>
 <%= button_to 'Drop3', 'update', method: 'patch', params: {column: 2, game_id: @game.id} ,class: 'column0' %>
 <%= button_to 'Drop4', 'update', method: 'patch', params: {column: 3, game_id: @game.id} ,class: 'column0' %>
+
 
 <section class="cell1">
   <%= image_tag("square#{@cells[0].value}", alt: "Square 1 is #{@cells[0].alt}") %>

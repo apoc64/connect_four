@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'user wins a game' do
-  it 'redirects to new trophy page' do
+  it 'has contratulatory message' do
     name = 'bob'
     user = User.create(name: name, password: '1234')
     game = user.create_game
@@ -19,7 +19,7 @@ describe 'user wins a game' do
 
     click_on 'Drop1'
 
-    expect(current_path).to eq(new_user_trophy_path(user))
+    expect(current_path).to eq(user_game_path(user, game))
     expect(page).to have_content("Congratulations #{name}!")
   end
 end
