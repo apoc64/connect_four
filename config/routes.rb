@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index]
-    resources :trophies, only: [:new, :create, :show]
+    resources :trophies, only: [:new, :create, :show, :index]
   end
 end

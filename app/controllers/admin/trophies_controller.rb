@@ -17,6 +17,10 @@ class Admin::TrophiesController < Admin::BaseController
     @trophy = Trophy.find(params[:id])
   end
 
+  def index
+    @trophies = Trophy.all
+  end
+
   private
 
   def trophy_params

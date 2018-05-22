@@ -52,5 +52,6 @@ describe 'User' do
     expect(page).to have_link(href: admin_trophies_path)
   end
 
-
+  xit 'can follow nav links' do
+  end
 end
