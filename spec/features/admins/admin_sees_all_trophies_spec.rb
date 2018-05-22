@@ -12,6 +12,7 @@ describe 'User visits admin trophies page' do
       visit admin_trophies_path
 
       expect(page).to have_content("All Trophies")
+      expect(page).to have_link("Create New Trophy")
       expect(page).to have_content(trophy1.name)
       expect(page).to have_content(trophy2.name)
     end
