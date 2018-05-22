@@ -5,9 +5,16 @@
   <h2>Good Luck!</h2>
 
 <% elsif @game.status == 1 %>
-<%= link_to "Claim Your Trophy", new_user_trophy_path(@game.user) %>
-
+  <%= link_to "Claim Your Trophy", new_user_trophy_path(@game.user) %>
   <h2>Congratulations <%= @game.user.name %>!</h2>
+
+  <% elsif @game.status == 2 %>
+  <%= link_to "Start New Game", new_user_game_path(@game.user) %>
+  <h2>You Lose!</h2>
+
+  <% elsif @game.status == 3 %>
+  <%= link_to "Start New Game", new_user_game_path(@game.user) %>
+  <h2>Tie!</h2>
 <% end %>
 
 <main class="game_board">
