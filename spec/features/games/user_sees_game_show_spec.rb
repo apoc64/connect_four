@@ -1,6 +1,54 @@
 require 'rails_helper'
 
 describe 'user visits the game show page' do
+  it 'throws a 404 if user not logged in' do
+    user = User.create(name: 'bob', password: '1234')
+    game = user.create_game
+
+    visit user_game_path(user, game)
+    message = "These are not the droids you're looking for"
+
+    expect(page).to have_content(message)
+  end
+
+  it 'throws a 404 if user is not the logged in user' do
+    user1 = User.create(name: 'bob', password: '1234')
+    user2 = User.create(name: 'blob', password: '1234')
+    game = user2.create_game
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+
+    visit user_game_path(user2, game)
+    message = "These are not the droids you're looking for"
+
+    expect(page).to have_content(message)
+  end
+
+  it 'throws a 404 if game does not belong to user' do
+    user1 = User.create(name: 'bob', password: '1234')
+    user2 = User.create(name: 'blob', password: '1234')
+    game = user2.create_game
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+
+    visit user_game_path(user1, game)
+    message = "These are not the droids you're looking for"
+
+    expect(page).to have_content(message)
+  end
+
+  it 'shows game if user is logged in and game is valid' do
+    user1 = User.create(name: 'bob', password: '1234')
+    user2 = User.create(name: 'blob', password: '1234')
+    game = user2.create_game
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user2)
+
+    visit user_game_path(user2, game)
+
+    expect(current_path).to eq(user_game_path(user2, game))
+  end
+
   it 'starts with an empty board' do
     user = User.create(name: 'bob', password: '1234')
     game = user.create_game

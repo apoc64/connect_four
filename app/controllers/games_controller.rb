@@ -14,9 +14,6 @@ class GamesController < ApplicationController
     # # end
   end
 
-  # def create #why wont it hit?
-  # end
-
   def new
     user = User.find(params[:user_id])
     game = user.create_game
