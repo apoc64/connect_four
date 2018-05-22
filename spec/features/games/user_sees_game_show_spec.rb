@@ -47,6 +47,7 @@ describe 'user visits the game show page' do
     visit user_game_path(user2, game)
 
     expect(current_path).to eq(user_game_path(user2, game))
+    expect(page).to have_content("Good Luck")
   end
 
   it 'starts with an empty board' do
