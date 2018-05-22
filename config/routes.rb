@@ -11,4 +11,9 @@ Rails.application.routes.draw do
     resources :games, only: [:show, :update, :new]
     resources :trophies, only: [:new]
   end
+
+  namespace :admin do
+    resources :users, only: [:index]
+    resources :trophies, only: [:new, :create, :show, :index]
+  end
 end
