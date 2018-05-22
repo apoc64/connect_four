@@ -9,4 +9,7 @@ describe 'User' do
     expect(page).to have_link(href: new_user_path)
     # empty game board
   end
+
+  xit 'it shows different links when logged in' do
+  end
 end

@@ -16,6 +16,9 @@ describe 'visitor' do
     expect(page).to have_content("Hello, #{name}")
   end
 
+  xit 'can fail to login' do
+  end
+
   it 'can log out' do
     name = 'bob'
     password = '1234'
