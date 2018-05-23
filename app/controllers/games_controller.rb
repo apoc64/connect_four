@@ -11,11 +11,7 @@ class GamesController < ApplicationController
   def update
     game = Game.find(params[:game_id])
     game.move(params[:column].to_i)
-    # if game.status == 0
-      redirect_to user_game_path(game.user, game)
-    # elsif game.status == 1
-    #   redirect_to new_user_trophy_path(game.user)
-    # # end
+    redirect_to user_game_path(game.user, game)
   end
 
   def new

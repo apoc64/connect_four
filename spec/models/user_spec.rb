@@ -26,4 +26,15 @@ describe User, type: :model do
       expect(game.cells[9].value).to eq(0)
     end
   end
+
+  describe 'win trophy' do
+    it 'can gain a trophy' do
+      user = User.create(name: 'bob', password: '1234')
+      trophy1 = Trophy.create(name: 'boom', description: 'boom boom', image: 'boom.jpg')
+
+      user.win_trophy
+
+      expect(user.trophies.last).to eq(trophy1)
+    end
+  end
 end
