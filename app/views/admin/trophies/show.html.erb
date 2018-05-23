@@ -1,3 +1,9 @@
-<h1><%= @trophy.name %></h1>
-<p><%= @trophy.description %></p>
+<article>
+<h2><%= @trophy.name %></h2>
+<h3><%= @trophy.description %></h3>
+</article>
+<main>
+  <div class="trophy_image">
 <%= image_tag @trophy.image %>
+</div>
+</main>

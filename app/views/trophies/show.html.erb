@@ -1,7 +1,12 @@
-<h1>Congratulations <%= @user.name %>!</h1>
-<h1>You won the <%= @trophy.name %> trophy!</h1>
-<p><%= @trophy.description %></p>
+<article>
+<h3>Congratulations <%= @user.name %>!</h3>
+<h2>You won the <%= @trophy.name %> trophy!</h2>
+<h3><%= @trophy.description %></h3>
+<h3><%= link_to "Play Again", new_user_game_path(@user) %></h3>
+</article>
 
+<main>
+  <div class="trophy_image">
 <%= image_tag @trophy.image %>
-
-<%= link_to "Play Again", new_user_game_path(@user) %>
+</div>
+</main>

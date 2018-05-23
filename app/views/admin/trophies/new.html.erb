@@ -1,11 +1,23 @@
-<h1>Create A Trophy</h1>
+<article>
+<h2>Create A Trophy</h2>
+</article>
 
+<main>
 <%= form_for [:admin, @trophy] do |f| %>
+<section>
 <%= f.label :name %>
 <%= f.text_field :name %>
+</section>
+<section>
 <%= f.label :description %>
 <%= f.text_area :description %>
+</section>
+<section>
 <%= f.label :image %>
 <%= f.text_field :image %>
+</section>
+<section>
 <%= f.submit "Create Trophy" %>
+</section>
 <% end %>
+</main>
