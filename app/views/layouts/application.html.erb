@@ -24,10 +24,12 @@
       <% end %>
     </nav>
 
+    <header>
     <% if flash[:error] %>
       <div class="error"><%= flash[:error] %></div>
     <% end %>
     <h1>Connect 4!</h1>
+  </header>
     <%= yield %>
   </body>
 </html>

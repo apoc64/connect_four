@@ -13,17 +13,65 @@
  *= require_tree .
  *= require_self
  */
+body {
+  display: block;
+  width: 100%;
+  font-family: ariel, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  background-color: black;
+  color: white;
+  padding: .5em;
+  margin: 0;
+}
+nav a {
+  padding: .5em;
+  color: white;
+}
+
+header {
+  background-color: red;
+  color: yellow ;
+  text-align: center;
+  margin: 0;
+  padding: .5em;
+}
+header h1 {
+  margin: 0;
+}
+
+article a {
+  text-align: center;
+}
+article h3 {
+  margin: .5em;
+  text-align: center;
+}
+
 .game_board {
+  margin-left: auto;
+  margin-right: auto;
   width: 90%;
   display: grid;
   grid-template-columns: repeat(4, 180px);
-  grid-template-rows: 30px, repeat(4, 180px);
+  grid-template-rows: 40px, repeat(4, 180px);
 }
-
-section p {
-  margin: 0;
-  padding: 0;
-  height: 0;
-  color: white;
-  font-size: 0pt;
+.game_board form {
+  padding: .5em;
+}
+.game_board .column0, .column1, .column2, .column3 {
+  margin-left: 50px;
+  background-color: red;
+  color: yellow;
+  font-size: 1em;
+}
+.game_board p {
+  display: none;
+}
+.game_board img {
+  margin-top: -5px;
+  margin-left: -1px;
 }
