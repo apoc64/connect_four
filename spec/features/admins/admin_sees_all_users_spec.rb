@@ -14,6 +14,23 @@ describe 'User visits users index' do
       expect(page).to have_content(user.name)
       expect(page).to have_content(admin.name)
     end
+
+    it 'admin can delete a user' do
+      user = User.create(name: 'blob', password: '1234')
+      admin = User.create!(name: 'bob', password: '1234', role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_users_path
+      within(".user_#{user.id}") do
+        click_link 'Delete'
+      end
+
+      expect(page).to have_content('All Users')
+      expect(page).to_not have_content(user.name)
+      expect(page).to have_content(admin.name)
+
+    end
   end
 
   context 'as a default user' do

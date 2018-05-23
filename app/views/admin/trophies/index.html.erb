@@ -2,8 +2,11 @@
 <h2>All Trophies</h2>
 <h3><%= link_to "Create New Trophy", new_admin_trophy_path %></h3>
 </article>
+
+<main>
 <ul>
   <% @trophies.each do |trophy| %>
   <li><%= trophy.name %></li>
   <% end %>
 </ul>
+</main>
