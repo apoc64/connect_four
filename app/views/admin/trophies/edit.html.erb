@@ -1,0 +1,23 @@
+<article>
+<h2>Edit Trophy</h2>
+</article>
+
+<main>
+<%= form_for [:admin, @trophy] do |f| %>
+<section>
+<%= f.label :name %>
+<%= f.text_field :name %>
+</section>
+<section>
+<%= f.label :description %>
+<%= f.text_area :description %>
+</section>
+<section>
+<%= f.label :image %>
+<%= f.text_field :image %>
+</section>
+<section>
+<%= f.submit "Update Trophy" %>
+</section>
+<% end %>
+</main>

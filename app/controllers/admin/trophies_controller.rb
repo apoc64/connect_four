@@ -21,6 +21,23 @@ class Admin::TrophiesController < Admin::BaseController
     @trophies = Trophy.all
   end
 
+  def destroy
+    trophy = Trophy.find(params[:id])
+    trophy.destroy
+
+    redirect_to admin_trophies_path
+  end
+
+  def edit
+    @trophy = Trophy.find(params[:id])
+  end
+
+  def update
+    @trophy = Trophy.find(params[:id])
+    @trophy.update(trophy_params)
+    redirect_to admin_trophies_path
+  end
+
   private
 
   def trophy_params

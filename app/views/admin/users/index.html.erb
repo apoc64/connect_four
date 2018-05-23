@@ -5,7 +5,10 @@
 <main>
 <ul>
 <% @users.each do |user| %>
-<li><%= user.name %></li>
+<li class="user_<%= user.id %>">
+  <%= user.name %>
+  <%= link_to "Delete", admin_user_path(user), method: 'delete' %>
+</li>
 <% end %>
 </ul>
 </main>
