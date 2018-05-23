@@ -1,9 +1,20 @@
+<article>
+  <h2>Login</h2>
+</article>
+
+<main>
 <%= form_tag login_path do %>
 
+<section>
 <%= label_tag :name %>
 <%= text_field_tag :name %>
+</section>
+<section>
 <%= label_tag :password %>
 <%= password_field_tag :password %>
-
+</section>
+<section>
 <%= submit_tag "Log On" %>
+</section>
 <% end %>
+</main>
