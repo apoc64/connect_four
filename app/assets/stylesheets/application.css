@@ -106,7 +106,16 @@ main form section label {
   width: 120px;
   font-weight: bold;
 }
-main form section input {
+main form section input, textarea {
   width: 250px;
   float: right;
+}
+main .trophy_image {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+main .trophy_image img {
+  width: 400px;
+  height: auto;
 }
