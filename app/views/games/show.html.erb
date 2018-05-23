@@ -1,23 +1,24 @@
 <article>
 <% if @game.status == 0 %>
 <h3><%= link_to "Start New Game", new_user_game_path(@game.user) %></h3>
-  <h3>Good Luck!</h3>
+  <h2>Good Luck!</h2>
 
 <% elsif @game.status == 1 %>
   <h3><%= link_to "Claim Your Trophy", new_user_trophy_path(@game.user) %></h3>
-  <h3>Congratulations <%= @game.user.name %>!</h3>
+  <h2>Congratulations <%= @game.user.name %>!</h2>
 
   <% elsif @game.status == 2 %>
   <h3><%= link_to "Start New Game", new_user_game_path(@game.user) %></h3>
-  <h3>You Lose!</h3>
+  <h2>You Lose!</h2>
 
   <% elsif @game.status == 3 %>
   <h3><%= link_to "Start New Game", new_user_game_path(@game.user) %></h3>
-  <h3>Tie!</h3>
+  <h2>Tie!</h2>
 <% end %>
 </article>
 
-<main class="game_board">
+<main>
+<div class="game_board">
 <%= button_to 'Drop1', 'update', method: 'patch', params: {column: 0, game_id: @game.id} ,class: 'column0' %>
 <%= button_to 'Drop2', 'update', method: 'patch', params: {column: 1, game_id: @game.id} ,class: 'column1' %>
 <%= button_to 'Drop3', 'update', method: 'patch', params: {column: 2, game_id: @game.id} ,class: 'column2' %>
@@ -103,4 +104,5 @@
     <%= image_tag("square#{@cells[15].value}.svg", alt: @cells[15].alt) %>
   <p>Square 16 is <%= @cells[15].alt %></p>
 </section>
+</div>
 </main>

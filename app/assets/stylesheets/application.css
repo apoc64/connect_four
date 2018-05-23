@@ -14,7 +14,6 @@
  *= require_self
  */
 body {
-  display: block;
   width: 100%;
   font-family: ariel, sans-serif;
   padding: 0;
@@ -50,11 +49,23 @@ article h3 {
   margin: .5em;
   text-align: center;
 }
+article h2 {
+  margin: .5em;
+  text-align: center;
+}
 
+main {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  /* align-items: center; */
+}
 .game_board {
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  /* width: 90%; */
+  /* align-items: center; */
   display: grid;
   grid-template-columns: repeat(4, 180px);
   grid-template-rows: 40px, repeat(4, 180px);
