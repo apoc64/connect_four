@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :create, :new] do
     resources :games, only: [:show, :update, :new]
-    resources :trophies, only: [:new]
+    resources :trophies, only: [:new, :show]
   end
 
   namespace :admin do
