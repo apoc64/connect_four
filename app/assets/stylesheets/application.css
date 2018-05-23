@@ -16,6 +16,14 @@
 .game_board {
   width: 90%;
   display: grid;
-  grid-template-columns: repeat(4, 210px);
-  grid-template-rows: 30px, repeat(4, 210px);
+  grid-template-columns: repeat(4, 180px);
+  grid-template-rows: 30px, repeat(4, 180px);
+}
+
+section p {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  color: white;
+  font-size: 0pt;
 }
