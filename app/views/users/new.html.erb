@@ -1,7 +1,18 @@
+<article>
+  <h2>Sign Up</h2>
+</article>
+
+<main>
 <%= form_for @user do |f| %>
+<section>
 <%= f.label :name %>
 <%= f.text_field :name %>
+</section>
+<section>
 <%= f.label :password %>
 <%= f.password_field :password %>
+<section>
 <%= f.submit %>
+</section>
 <% end %>
+</main>

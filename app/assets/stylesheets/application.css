@@ -61,6 +61,7 @@ main {
   display: flex;
   /* align-items: center; */
 }
+
 .game_board {
   margin-left: auto;
   margin-right: auto;
@@ -85,4 +86,27 @@ main {
 .game_board img {
   margin-top: -5px;
   margin-left: -1px;
+}
+
+main h3 {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+main form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+main form section {
+  padding: 1em;
+}
+main form section label {
+  width: 120px;
+  font-weight: bold;
+}
+main form section input {
+  width: 250px;
+  float: right;
 }

@@ -1,7 +1,11 @@
-<h1>Hello, <%= @user.name %></h1>
-<%= link_to "Start New Game", new_user_game_path(@user) %>
+<article>
+<h2>Hello, <%= @user.name %></h2>
+<h3><%= link_to "Start New Game", new_user_game_path(@user) %></h3>
+</article>
 
+<main>
 <h3>Wins: <%= @statuses[1].count if @statuses[1] %></h3>
 <h3>Losses: <%= @statuses[2].count if @statuses[2]%></h3>
 <h3>Draws: <%= @statuses[3].count if @statuses[3]%></h3>
 <h3>In Progress: <%= @statuses[0].count if @statuses[0]%></h3>
+</main>
