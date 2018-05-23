@@ -11,6 +11,7 @@
 
   <body>
     <nav>
+      <%= link_to "Home", root_path %>
       <% if current_user %>
         <%= link_to "Your Profile", user_path(current_user) %>
         <%= link_to "Log out", logout_path %>

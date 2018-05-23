@@ -1,0 +1,87 @@
+<article>
+  <h2>Welcome to Connect 4!</h2>
+  <% if !current_user %>
+  <h3>To play, <%= link_to "Sign Up", new_user_path %>, or <%= link_to "Log in", login_path %></h3>
+  <% else %>
+  <h3><%= link_to "View your profile", user_path(current_user) %>, or <%= link_to "Start a new game", new_user_game_path(current_user) %></h3>
+  <% end %>
+</article>
+
+<main>
+<div class="game_board">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<section class="cell1">
+  <%= image_tag("square1.svg") %>
+  <p>Square 1</p></section>
+
+<section class="cell2">
+    <%= image_tag("square2.svg") %>
+  <p>Square 2</p></section>
+
+<section class="cell3">
+    <%= image_tag("square1.svg") %>
+  <p>Square 3</p></section>
+
+<section class="cell4">
+    <%= image_tag("square2.svg") %>
+  <p>Square 4</p></section>
+
+<section class="cell5">
+    <%= image_tag("square2.svg") %>
+  <p>Square 5</p></section>
+
+<section class="cell6">
+    <%= image_tag("square1.svg") %>
+  <p>Square 6</p></section>
+
+<section class="cell7">
+    <%= image_tag("square2.svg") %>
+  <p>Square 7</p></section>
+
+<section class="cell8">
+    <%= image_tag("square1.svg") %>
+  <p>Square 8</p></section>
+
+<section class="cell9">
+    <%= image_tag("square1.svg") %>
+  <p>Square 9</p></section>
+
+<section class="cell10">
+    <%= image_tag("square2.svg") %>
+  <p>Square 10</p></section>
+
+<section class="cell11">
+    <%= image_tag("square1.svg") %>
+  <p>Square 11</p>
+</section>
+
+<section class="cell12">
+    <%= image_tag("square2.svg") %>
+  <p>Square 12</p>
+</section>
+
+<section class="cell13">
+    <%= image_tag("square2.svg") %>
+  <p>Square 13</p>
+</section>
+
+<section class="cell14">
+    <%= image_tag("square1.svg") %>
+  <p>Square 14</p>
+</section>
+
+<section class="cell15">
+    <%= image_tag("square2.svg") %>
+  <p>Square 15</p>
+</section>
+
+<section class="cell16">
+    <%= image_tag("square1.svg") %>
+  <p>Square 16</p>
+</section>
+</div>
+</main>
