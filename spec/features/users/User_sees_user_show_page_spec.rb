@@ -74,4 +74,16 @@ describe 'user visits user show page' do
     expect(page).to have_content(message3)
     expect(page).to have_content(message4)
   end
+
+  it 'shows users trophies' do
+    user = User.create(name: 'bob', password: '1234')
+    trophy = Trophy.create(name: 'blob', description: 'blbob', image: 'bob_ross.jpg')
+    user.trophies << trophy
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit user_path(user)
+
+    expect(page).to have_content(trophy.name)
+
+  end
 end
