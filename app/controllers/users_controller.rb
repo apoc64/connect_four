@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.select('count(user.games.where(status = 1)) AS count').group(:user_id).order(:count)
+  end
+
   private
 
   def user_params
