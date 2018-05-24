@@ -18,9 +18,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user == current_user
       @statuses = @user.games.select('count(games.id) AS count').group(:status).order(:status)
+      @trophies = @user.trophies.uniq
     else
       render file: '/public/404'
     end
+  end
+
+  def index
+    @users = User.select('count(user.games.where(status = 1)) AS count').group(:user_id).order(:count)
   end
 
   private

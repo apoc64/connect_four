@@ -119,3 +119,28 @@ main .trophy_image img {
   width: 400px;
   height: auto;
 }
+
+h2 {
+  text-align: center;
+}
+aside {
+  display: flex;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+aside section {
+  padding: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+aside img {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+aside h3 {
+  text-align: center;
+}

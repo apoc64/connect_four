@@ -1,0 +1,12 @@
+<article>
+<h2>High Scores</h2>
+</article>
+
+<main>
+  <h3>Users With Most Wins</h3>
+  <ol>
+  <% @users.each do |user| %>
+  <li><strong><%= user.name %></strong> Number of wins: <%= user.wins %></li>
+  <% end %>
+</ol>
+</main>

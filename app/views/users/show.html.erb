@@ -9,3 +9,13 @@
 <h3>Draws: <%= @statuses[3].count if @statuses[3]%></h3>
 <h3>In Progress: <%= @statuses[0].count if @statuses[0]%></h3>
 </main>
+
+<h2>Trophies:</h2>
+<aside>
+  <% @trophies.each do |trophy| %>
+  <section>
+  <h3><%= trophy.name %></h3>
+  <%= image_tag trophy.image %>
+</section>
+  <% end %>
+</aside>
