@@ -45,7 +45,7 @@ class UsersController < ApplicationController
           9999
         end
       end
-      if g
+      if g && ((g.updated_at - g.created_at) > 1.2)
         [g, (g.updated_at - g.created_at).round(2)]
       else
         nil
