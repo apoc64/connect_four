@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     fast_map = users.map do |u|
       g = u.games.min_by do |game|
         # binding.pry
-        if game.status == 1
+        if (game.status == 1) && ((game.updated_at - game.created_at) > 1.2)
           (game.updated_at - game.created_at)
         else
           9999
