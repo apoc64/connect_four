@@ -2,9 +2,9 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates_presence_of :password
 
-  has_many :games
+  has_many :games, dependent: :destroy
   has_many :user_trophies
-  has_many :trophies, through: :user_trophies
+  has_many :trophies, through: :user_trophies, dependent: :destroy
 
   has_secure_password
 
