@@ -45,8 +45,12 @@ class UsersController < ApplicationController
           9999
         end
       end
-      [g, (g.updated_at - g.created_at).round(2)]
-    end
+      if g
+        [g, (g.updated_at - g.created_at).round(2)]
+      else
+        nil
+      end
+    end.compact
     @fastest = fast_map.sort_by do |u|
       u[1]
     end[0..4]
