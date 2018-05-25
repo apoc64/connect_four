@@ -7,7 +7,7 @@
 <ul>
   <% @trophies.each do |trophy| %>
   <li class="trophy_<%= trophy.id %>">
-    <%= trophy.name %>
+    <%= link_to trophy.name, admin_trophy_path(trophy) %>
     <%= link_to "Edit", edit_admin_trophy_path(trophy) %>
     <%= link_to "Delete", admin_trophy_path(trophy), method: 'delete' %>
   </li>
