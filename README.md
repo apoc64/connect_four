@@ -1,24 +1,31 @@
-# README
+# Connect Four
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails app is an implementation of the classic game. Users and game data are stored in a PostgreSQL database. The game board is created using CSS grid. Visitors can view high scores and log in or sign up. Users can play games, win trophies, and get on the high scores list. Admins can create trophies and delete users. The deployed app is here: https://serene-beach-52766.herokuapp.com/
 
-Things you may want to cover:
+## Ruby version
+This app uses:
 
-* Ruby version
+* Ruby 2.4.2
+* Rails 5.2
 
-* System dependencies
+## Setup
+After cloning this project, run
+```bundle install```
+```rake db:create```
+```rake db:migrate```
 
-* Configuration
+## Running the app
+To run the app locally, run
+```rails s```
 
-* Database creation
+Then visit localhost:3000 in your browser. This will allow you to sign up or login with a secure password. If you wish to create an admin, you can run.
 
-* Database initialization
+```rails c```
 
-* How to run the test suite
+Then from the Rails console, run
+```User.create(name: 'bob', password: '1234', role: 'admin')```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Testing
+To run the test suite, run
 
-* Deployment instructions
-
-* ...
+```rspec```
